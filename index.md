@@ -91,20 +91,20 @@ Here we have extracted the 3 tv shows with the highest streams per year, and als
 
 Create a new data frame that only contains the 4 tv shows that were released the longest ago!
 
-
 ### **Answer:**
+
 <details>
-  <summary>Click here to view answer</summary>
-  
+
+<summary>Click here to view answer</summary>
+
 ``` r
 tv_minyear <- tv %>% 
   slice_min(popularity_year, n=4)
   
 # Stranger things, Money heist, You, Ozark
 ```
-  
-</details> 
 
+</details>
 
 <img src="images/strangerthings.jpeg" width="500px" height="200px"/>
 
@@ -128,14 +128,16 @@ Here we have moved country next to the tv show column. For me, this is useful wh
 Move "popularity age" to before the very last column!
 
 ### **Answer:**
+
 <details>
-  <summary>Click here to view answer</summary>
-  
+
+<summary>Click here to view answer</summary>
+
 ``` r
 tv_age <- relocate(tv, popularity_age, .before = popularity_country)
 ```
-</details> 
 
+</details>
 
 <img src="images/crown.jpeg" width="500px" height="200px"/>
 
@@ -143,11 +145,7 @@ tv_age <- relocate(tv, popularity_age, .before = popularity_country)
 
 ## 4. Join data using `join()` functions
 
-Again, sometimes, especially in ecology, we don't collect our data in the most efficient way. Sometimes in the field we do what is best and easiest in the moment. In some cases you might have multiple data sets that you would ideally like to put into one large data set. Rather than going back into excel, or whichever format was used originally to do this, we can use the `join()` function from the `dplyr` package. There are 4 `join()` functions: 
--  `left_join()` 
--  `right_join()` 
--  `inner_join()` 
--  `full_join()`
+Again, sometimes, especially in ecology, we don't collect our data in the most efficient way. Sometimes in the field we do what is best and easiest in the moment. In some cases you might have multiple data sets that you would ideally like to put into one large data set. Rather than going back into excel, or whichever format was used originally to do this, we can use the `join()` function from the `dplyr` package. There are 4 `join()` functions: - `left_join()` - `right_join()` - `inner_join()` - `full_join()`
 
 ``` r
 # Join----
@@ -191,15 +189,16 @@ Create a data frame with using the conditions stated above!
 ### **Answer:**
 
 <details>
-  <summary>Click here to view answer</summary>
-  
+
+<summary>Click here to view answer</summary>
+
 ``` r
 correct <- tv %>% 
   transmute(correct_streams= number_streams_2021 *100,
             correct_age= popularity_age -1)
 ```
-</details> 
 
+</details>
 
 Isolating and editing columns in this way can come in handy when graphing, if you are only looking to plot two variables it may be easier to visualise the data without all of the surrounding columns.
 
@@ -209,8 +208,7 @@ Isolating and editing columns in this way can come in handy when graphing, if yo
 
 ## 6. Descending or ascending columns with `arrange()`
 
-In most cases, the reason we want to have a look at data is to see if there any trends or patterns visible. To see this it tends to help if you can see values in ascending or descending order. This is where the `arrange()` function comes in very handy.  This functions allows us to look at column rows in descending or ascending order. This comes in handy visually because it makes it a whole lot easier to notice trends in the data that we would not otherwise see visually. Understanding the general trend and patterns in a data set can also be helpful when trying to plan how you want to analyse the data you have.
-So, lets say we want to have a look at the "number of streams in 2021" in ascending order firstly then descending order.
+In most cases, the reason we want to have a look at data is to see if there any trends or patterns visible. To see this it tends to help if you can see values in ascending or descending order. This is where the `arrange()` function comes in very handy. This functions allows us to look at column rows in descending or ascending order. This comes in handy visually because it makes it a whole lot easier to notice trends in the data that we would not otherwise see visually. Understanding the general trend and patterns in a data set can also be helpful when trying to plan how you want to analyse the data you have. So, lets say we want to have a look at the "number of streams in 2021" in ascending order firstly then descending order.
 
 ``` r
 #Arrange -----
@@ -221,7 +219,8 @@ tv %>%
 tv %>% 
   arrange(desc(number_streams_2021))  # Specify that you want it in descending order
 ```
-This gives a clear output of the streams in both orders. If you would like your data to be in ascending/desciding order in a new dataframe, then you would just need to specifty that and add an extra %>% into the mix! 
+
+This gives a clear output of the streams in both orders. If you would like your data to be in ascending/desciding order in a new dataframe, then you would just need to specifty that and add an extra %\>% into the mix!
 
 <img src="images/love_blind.jpeg" width="450px" height="500px"/>
 
@@ -243,30 +242,33 @@ Lets have a look at the output data table.
 
 As you can see in the last column, which is the column we just added using mutate and casewhen(), it either says Record or NA. The NA's appear because these rows did not meet the conditions specified in the casewhen() line of code.
 
-Lets change this to make it a touch clearer. 
+Lets change this to make it a touch clearer.
 
 ### **Challenge**
 
 In the same column create a condition for the rows containing NA values, so that it will now say "Nonrecord".
 
 ### **Answer:**
+
 <details>
-  <summary>Click here to view answer</summary>
-  
+
+<summary>Click here to view answer</summary>
+
 ``` r
 nonrecord <- tv %>% 
   mutate("record"= case_when(number_streams_2021 >= 3000 ~ 'Record',
                    number_streams_2021 <= 3000 ~ 'Nonrecord'))
 ```
-</details> 
 
-Output: 
+</details>
+
+Output:
 
 <img src="images/casewhen2.png" width="900px" height="150px"/>
 
 Now look at the beautiful column we have created with both conditions specified and no more NA values!!
 
-I love this function and I think you should too! 
+I love this function and I think you should too!
 
 <hr>
 
@@ -307,4 +309,3 @@ For more on `dplyr`, read the official <a href="https://posit.co/resources/cheat
 </li>
 
 </ul>
-
