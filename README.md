@@ -2,8 +2,7 @@
 
 ## By Pippa Emms
 
-## Any questions email: [ourcodingclub\@gmail.com](mailto:ourcodingclub@gmail.com){.email}
-
+## Any questions email: [ourcodingclub\@gmail.com](mailto:ourcodingclub@gmail.com)
 ## Overview:
 
 -   [Tutorial](https://pippacode.github.io/moredplyrfunctions/)
