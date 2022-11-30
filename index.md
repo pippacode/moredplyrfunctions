@@ -296,7 +296,7 @@ For more on `dplyr`, read the official <a href="https://posit.co/resources/cheat
 
 #### Check out our <a href="https://ourcodingclub.github.io/links/" target="_blank">Useful links</a> page where you can find loads of guides and cheatsheets.
 
-#### If you have any questions about completing this tutorial, please contact us on [ourcodingclub\@gmail.com](mailto:ourcodingclub@gmail.com)
+#### If you have any questions about completing this tutorial, please contact us on [ourcodingclub@gmail.com](mailto:ourcodingclub@gmail.com)
 
 #### <a href="https://forms.gle/81Bk9JsGQ5faxcMJA" target="_blank">We would love to hear your feedback on the tutorial, whether you did it in the classroom or online!</a>
 
