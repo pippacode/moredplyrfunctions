@@ -1,4 +1,8 @@
-### ![](images/main_image.jpeg)Tutorial Aims
+### ![](images/main_image.jpeg)
+
+Image taken from: <https://www.youtube.com/watch?v=M2QuERvxwm0>
+
+### Tutorial Aims
 
 1.  Learn more `dplyr` functions
 2.  Be able to apply these functions to efficiently manipulate data
@@ -28,13 +32,13 @@ However, the `dplyr` package has many more functions that can help us to subset,
 
 In this tutorial the most "advanced" coding we do is using a few pipes `%>%` therefore it is advised that you have gone through the following tutorial <a href="https://ourcodingclub.github.io/tutorials/data-manip-efficient/#piping-graphs" target="_blank">Efficient data manipulations (pipes)</a>. If you have already got the hang of using the functions in `dplyr` head over to <a href="https://ourcodingclub.github.io/tutorials/data-manip-creative-dplyr/" target="_blank">Advanced Data Manipulation</a> for some more advanced application of the functions.
 
-You can get all of the resources for this tutorial from <a href="https://github.com/EdDataScienceEES/tutorial-pippacode">this GitHub repository</a>. Clone and download the repo as a zip file, then unzip it.
+You can get all of the resources for this tutorial from <a href="https://github.com/pippacode/moredplyrfunctions">this GitHub repository</a>. Clone and download the repo as a zip file, then unzip it.
 
 <a name="section1"></a>
 
 ## 1. Loading libraries and data
 
-Let's begin! In this tutorial we will be working with data sets in the `data` folder in: <a href="https://github.com/EdDataScienceEES/tutorial-pippacode">this GitHub repository</a>. Open `RStudio`, and create a new script by clicking on `File/ New File/ R Script`. Copy and paste the chunks of code provided into your script, using `#` to make useful comments.
+Let's begin! In this tutorial we will be working with data sets in the `data` folder in: <a href="https://github.com/EdDataScienceEES/tutorial-pippacode">this GitHub repository</a>. Open `RStudio`, and create a new script by clicking on `File/ New File/ R Script`. Copy and paste the chunks of code provided into your script, using `#` to make useful comments and `----` to create sections within your code, for more on coding etiquette head over to this [tutorial](https://ourcodingclub.github.io/tutorials/etiquette/).
 
 ``` r
 # Title: Introducing more `dplyr` functions
@@ -50,7 +54,7 @@ library(dplyr)
 # If you have never used this package, install it using install.packages("dplyr")
 
 # Load tv data
-tv <- read.csv("data/netflix_tv.csv")
+tv <- read.csv("data/1_tv.csv")
 
 
 # Check the tv data
@@ -60,7 +64,9 @@ str(tv)    # types of variables
 
 As you can see this is not the most scientific data set (nor are the values accurate, they are made up!), however, we will be using this Netflix data to make try and make coding fun...
 
-<img src="images/netflix.webp"/>
+![](images/netflix.webp)
+
+Image taken from:<https://www.edigitalagency.com.au/logos/new-netflix-logo-png/>
 
 <a name="section2"></a>
 
@@ -108,6 +114,8 @@ tv_minyear <- tv %>%
 
 <img src="images/strangerthings.jpeg" width="500px" height="200px"/>
 
+Image taken from: <https://corporate.target.com/article/2017/10/netflix-stranger-things>
+
 <a name="section3"></a>
 
 ## 3. Moving data using `relocate()`
@@ -116,7 +124,7 @@ As ecologists know, sometimes when writing data in the field we don't think abou
 
 ``` r
 # Relocate ----
-tv_country <- relocate(tv, popularity_country, .after=tv_show)
+tv_country <- relocate(tv, popularity_country, .after=name)
 # Have to specify which column you would like to move and after which column you would like it to come
 # The same can be applied to moving a column "before" another
 ```
@@ -141,6 +149,8 @@ tv_age <- relocate(tv, popularity_age, .before = popularity_country)
 
 <img src="images/crown.jpeg" width="500px" height="200px"/>
 
+Image taken from: <https://www.broadwayworld.com/bwwtv/article/Netflixs-THE-CROWN-Casts-Princess-Anne-for-Third-Season-20180622>
+
 <a name="section4"></a>
 
 ## 4. Join data using `join()` functions
@@ -150,12 +160,12 @@ Again, sometimes, especially in ecology, we don't collect our data in the most e
 ``` r
 # Join----
 # Load more data
-movie <- read.csv("data/netflix_movies.csv")
+movie <- read.csv("data/movies.csv")
 
 tv_movie <- full_join(tv, movie)  # This has joined the two data frames together
 
 # Load more data
-tv2 <- read.csv("data/netflix_tv2.csv")
+tv2 <- read.csv("data/2_tv.csv")
 
 tv_join <- left_join(tv, tv2, by= c( "name"= "tv_show"))    # Added column from tv2 to tv that match specified rows
 tv_join2 <- right_join(tv, tv2, by= c( "name"= "tv_show"))  # Added columns from tv to tv2 that match specified rows
@@ -166,6 +176,8 @@ tv_join4 <- full_join(tv, tv2, by= c( "name"= "tv_show"))   # Added both data se
 `join()` functions can come in really handy when trying to join two separate yet similar data sets.
 
 <img src="images/ozark.webp" width="500px" height="200px"/>
+
+Image taken from: <https://netflixjunkie.com/netflix-originals-ozark-season-4-symbols-explained/>
 
 <a name="section5"></a>
 
@@ -204,6 +216,8 @@ Isolating and editing columns in this way can come in handy when graphing, if yo
 
 <img src="images/you.jpg" width="500px" height="200px"/>
 
+Image taken from: <https://www.empireonline.com/tv/reviews/you2018-review/>
+
 <a name="section6"></a>
 
 ## 6. Descending or ascending columns with `arrange()`
@@ -223,6 +237,8 @@ tv %>%
 This gives a clear output of the streams in both orders. If you would like your data to be in ascending/desciding order in a new dataframe, then you would just need to specifty that and add an extra %\>% into the mix!
 
 <img src="images/love_blind.jpeg" width="450px" height="500px"/>
+
+Image taken from: <https://www.eonline.com/news/1350805/love-is-blind-season-3-sneak-peek-one-contestant-opens-up-while-another-does-jumping-jacks>
 
 <a name="section7"></a>
 
@@ -260,11 +276,11 @@ nonrecord <- tv %>%
                    number_streams_2021 <= 3000 ~ 'Nonrecord'))
 ```
 
-</details>
-
 Output:
 
 <img src="images/casewhen2.png" width="900px" height="150px"/>
+
+</details>
 
 Now look at the beautiful column we have created with both conditions specified and no more NA values!!
 
@@ -273,6 +289,8 @@ I love this function and I think you should too!
 <hr>
 
 ![](images/welldone.jpeg)
+
+Image taken from: <https://www.dreamstime.com/illustration/cartoon-well-done.html>
 
 Well done, you have come to the end of this tutorial. Now that you are familiar with some more dplyr functions feel free to look at the <a href="https://ourcodingclub.github.io/tutorials/data-manip-creative-dplyr/" target="_blank">Advanced Data Manipulation</a> tutorial. In this tutorial we learned:
 
@@ -296,7 +314,7 @@ For more on `dplyr`, read the official <a href="https://posit.co/resources/cheat
 
 #### Check out our <a href="https://ourcodingclub.github.io/links/" target="_blank">Useful links</a> page where you can find loads of guides and cheatsheets.
 
-#### If you have any questions about completing this tutorial, please contact us on [ourcodingclub@gmail.com](mailto:ourcodingclub@gmail.com)
+#### If you have any questions about completing this tutorial, please contact us on [ourcodingclub\@gmail.com](mailto:ourcodingclub@gmail.com)
 
 #### <a href="https://forms.gle/81Bk9JsGQ5faxcMJA" target="_blank">We would love to hear your feedback on the tutorial, whether you did it in the classroom or online!</a>
 
