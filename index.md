@@ -38,7 +38,7 @@ You can get all of the resources for this tutorial from <a href="https://github.
 
 ## 1. Loading libraries and data
 
-Let's begin! In this tutorial we will be working with data sets in the `data` folder in: <a href="https://github.com/EdDataScienceEES/tutorial-pippacode">this GitHub repository</a>. Open `RStudio`, and create a new script by clicking on `File/ New File/ R Script`. Copy and paste the chunks of code provided into your script, using `#` to make useful comments and `----` to create sections within your code, for more on coding etiquette head over to this [tutorial](https://ourcodingclub.github.io/tutorials/etiquette/).
+Let's begin! In this tutorial we will be working with data sets in the `data` folder from this [github repo](https://github.com/pippacode/moredplyrfunctions). Open `RStudio`, and create a new script by clicking on `File/ New File/ R Script`. Copy and paste the chunks of code provided into your script, using `#` to make useful comments and `----` to create sections within your code, for more on coding etiquette head over to this [tutorial](https://ourcodingclub.github.io/tutorials/etiquette/).
 
 ``` r
 # Title: Introducing more `dplyr` functions
