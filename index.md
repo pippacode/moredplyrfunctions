@@ -204,7 +204,7 @@ Now lets say that Netflix made *another* mistake... And the column for "populari
 
 ### **Challenge**
 
-Create a data frame with using the conditions stated above!
+Create a data frame using the conditions stated above!
 
 ### **Answer:**
 
