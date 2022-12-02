@@ -155,7 +155,15 @@ Image taken from: <https://www.broadwayworld.com/bwwtv/article/Netflixs-THE-CROW
 
 ## 4. Join data using `join()` functions
 
-Again, sometimes, especially in ecology, we don't collect our data in the most efficient way. Sometimes in the field we do what is best and easiest in the moment. In some cases you might have multiple data sets that you would ideally like to put into one large data set. Rather than going back into excel, or whichever format was used originally to do this, we can use the `join()` function from the `dplyr` package. There are 4 `join()` functions: - `left_join()` - `right_join()` - `inner_join()` - `full_join()`
+Again, sometimes, especially in ecology, we don't collect our data in the most efficient way. Sometimes in the field we do what is best and easiest in the moment. In some cases you might have multiple data sets that you would ideally like to put into one large data set. Rather than going back into excel, or whichever format was used originally to do this, we can use the `join()` function from the `dplyr` package. There are 4 `join()` functions:
+
+-   `left_join()`
+
+-   `right_join()`
+
+-   `inner_join()`
+
+-   `full_join()`
 
 ``` r
 # Join----
